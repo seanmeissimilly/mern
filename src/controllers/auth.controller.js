@@ -83,3 +83,21 @@ export const logout = (req, res) => {
   });
   return res.sendStatus(200);
 };
+
+export const profile = async (req, res) => {
+  try {
+    //todo: Busco el usuario en la base de datos.
+    const userFound = await User.findById(req.user.id);
+    //todo: Reviso si el usuario existe.
+    if (!userFound) return res.status(400).json({ message: "User not found" });
+    return res.json({
+      id: userFound._id,
+      username: userFound.username,
+      createdAt: userFound.createdAt,
+      updatedAt: userFound.updatedAt,
+    });
+  } catch (error) {
+    console.error("Error fetching profile:", error);
+    return res.status(500).json({ message: error.message });
+  }
+};
