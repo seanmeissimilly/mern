@@ -90,7 +90,7 @@ export const profile = async (req, res) => {
     const userFound = await User.findById(req.user.id);
     //todo: Reviso si el usuario existe.
     if (!userFound) return res.status(400).json({ message: "User not found" });
-    return res.json({
+    res.json({
       id: userFound._id,
       username: userFound.username,
       createdAt: userFound.createdAt,
@@ -98,6 +98,6 @@ export const profile = async (req, res) => {
     });
   } catch (error) {
     console.error("Error fetching profile:", error);
-    return res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
