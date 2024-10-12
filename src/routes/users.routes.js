@@ -10,7 +10,7 @@ import {
 const router = Router();
 
 /**
- * @swagger
+ * @openapi
  * /api/profile:
  *   get:
  *     summary: Perfil de usuario
