@@ -27,7 +27,7 @@ const router = Router();
  *               items:
  *                 $ref: '#/components/schemas/Task'
  */
-router.get("/tasks", authRequired, getTasks);
+router.get("/tasks/", authRequired, getTasks);
 
 /**
  * @swagger
@@ -45,7 +45,7 @@ router.get("/tasks", authRequired, getTasks);
  *               items:
  *                 $ref: '#/components/schemas/Task'
  */
-router.get("/user/tasks", authRequired, getTasksByUser);
+router.get("/user/tasks/", authRequired, getTasksByUser);
 
 /**
  * @swagger
@@ -70,7 +70,7 @@ router.get("/user/tasks", authRequired, getTasksByUser);
  *       404:
  *         description: Tarea no encontrada
  */
-router.get("/tasks/:id", authRequired, getTask);
+router.get("/tasks/:id/", authRequired, getTask);
 
 /**
  * @swagger
@@ -91,7 +91,7 @@ router.get("/tasks/:id", authRequired, getTask);
  *       404:
  *         description: Tarea no encontrada
  */
-router.delete("/tasks/:id", authRequired, deleteTask);
+router.delete("/tasks/:id/", authRequired, deleteTask);
 
 /**
  * @swagger
@@ -122,7 +122,7 @@ router.delete("/tasks/:id", authRequired, deleteTask);
  *       404:
  *         description: Tarea no encontrada
  */
-router.put("/tasks/:id", authRequired, updateTask);
+router.put("/tasks/:id/", authRequired, updateTask);
 
 /**
  * @swagger
@@ -144,6 +144,6 @@ router.put("/tasks/:id", authRequired, updateTask);
  *             schema:
  *               $ref: '#/components/schemas/Task'
  */
-router.post("/tasks", authRequired, createTask);
+router.post("/tasks/", authRequired, createTask);
 
 export default router;

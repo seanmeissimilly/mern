@@ -3,7 +3,10 @@ import Task from "../models/task.model.js";
 export const getTasksByUser = async (req, res) => {
   try {
     //Todo: Busco las tareas del usuario.
-    const tasks = await Task.find({ user: req.user.id }).populate("user");
+    const tasks = await Task.find({ user: req.user.id }).populate({
+      path: "user",
+      select: "-password",
+    });
     res.status(200).json(tasks);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -13,7 +16,10 @@ export const getTasksByUser = async (req, res) => {
 export const getTasks = async (req, res) => {
   try {
     //Todo: Busco todas las tareas.
-    const tasks = await Task.find().populate("user");
+    const tasks = await Task.find().populate({
+      path: "user",
+      select: "-password",
+    });
     res.status(200).json(tasks);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -40,7 +46,7 @@ export const deleteTask = async (req, res) => {
   try {
     const deleteTask = await Task.findByIdAndDelete(req.params.id);
     if (!deleteTask) return res.status(404).json({ message: "Task not found" });
-    res.status(204).json(deleteTask);
+    res.status(204).json({ message: "Task successfully deleted" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -60,7 +66,10 @@ export const updateTask = async (req, res) => {
 
 export const getTask = async (req, res) => {
   try {
-    const taskFound = await Task.findById(req.params.id).populate("user");
+    const taskFound = await Task.findById(req.params.id).populate({
+      path: "user",
+      select: "-password",
+    });
     if (!taskFound) return res.status(404).json({ message: "Task not found" });
     res.status(200).json(taskFound);
   } catch (error) {

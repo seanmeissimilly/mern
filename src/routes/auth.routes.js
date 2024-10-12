@@ -1,11 +1,5 @@
 import { Router } from "express";
-import {
-  register,
-  login,
-  logout,
-  profile,
-} from "../controllers/auth.controller.js";
-import { authRequired } from "../middlewares/validateToken.js";
+import { register, login, logout } from "../controllers/auth.controller.js";
 
 const router = Router();
 
@@ -18,7 +12,7 @@ const router = Router();
  *       200:
  *         description: Usuario registrado
  */
-router.post("/register", register);
+router.post("/register/", register);
 
 /**
  * @swagger
@@ -29,7 +23,7 @@ router.post("/register", register);
  *       200:
  *         description: Inicio de sesión exitoso
  */
-router.post("/login", login);
+router.post("/login/", login);
 
 /**
  * @swagger
@@ -40,19 +34,6 @@ router.post("/login", login);
  *       200:
  *         description: Cierre de sesión exitoso
  */
-router.post("/logout", logout);
-
-/**
- * @swagger
- * /api/profile:
- *   get:
- *     summary: Perfil de usuario
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Perfil del usuario
- */
-router.get("/profile", authRequired, profile);
+router.post("/logout/", logout);
 
 export default router;
