@@ -1,2 +1,2 @@
 # mern
-Repositorio MERN (MongoDB, Express.js, React.js, Node.js) Este repositorio contiene un proyecto MERN completo, que incluye una aplicación web con una interfaz de usuario desarrollada en React.js, un backend con Express.js y Node.js, y una base de datos MongoDB.
+MERN Repository (MongoDB, Express.js, React.js, Node.js) This repository contains a complete MERN project, which includes a web application with a user interface developed in React.js, a backend with Express.js and Node.js, and a MongoDB database.
