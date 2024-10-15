@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { register, login, logout } from "../controllers/auth.controller.js";
+import { validateSchema } from "../middlewares/validator.middleware.js";
+import { loginSchema, registerSchema } from "../schemas/auth.schema.js";
 
 const router = Router();
 
@@ -12,7 +14,7 @@ const router = Router();
  *       200:
  *         description: Usuario registrado
  */
-router.post("/register/", register);
+router.post("/register/", validateSchema(registerSchema), register);
 
 /**
  * @swagger
@@ -23,7 +25,7 @@ router.post("/register/", register);
  *       200:
  *         description: Inicio de sesión exitoso
  */
-router.post("/login/", login);
+router.post("/login/", validateSchema(loginSchema), login);
 
 /**
  * @swagger
