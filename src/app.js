@@ -6,8 +6,10 @@ import userRoutes from "./routes/users.routes.js";
 import cookieParser from "cookie-parser";
 import swaggerUI from "swagger-ui-express";
 import swaggerSpecs from "./swagger/swagger.js";
+import cors from "cors";
 
 const app = express();
+app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(cookieParser());
